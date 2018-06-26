@@ -104,8 +104,8 @@ namespace TheLastSlice.Entities
         {
             foreach (Map map in TheLastSliceGame.MapManager.Maps)
             {
-                int numPickups = TheLastSliceGame.Random.Next(2, 4);
-                int numIngredients = TheLastSliceGame.Random.Next(6, 12);
+                int numPickups = TheLastSliceGame.Random.Next(1, 1);
+                int numIngredients = TheLastSliceGame.Random.Next(1, 1);
 
                 for (int i = 0; i < numIngredients; i++)
                 {
@@ -270,98 +270,99 @@ namespace TheLastSlice.Entities
 
         public void DeliverPizza(House house, List<Ingredient> deliveredPizza)
         {
-            if(house != null)
-            {
-                List<Ingredient> orderedPizza = house.Pizza;
+            CompleteDelivery();
+            //if (house != null)
+            //{
+            //    List<Ingredient> orderedPizza = house.Pizza;
 
-                bool deliveryCompleted = true;
+            //    bool deliveryCompleted = true;
 
-                //Make sure the delivered pizza has the same ingredients as the pizza that was ordered - H.E.
-                if(orderedPizza.Count == deliveredPizza.Count)
-                {
-                    foreach(Ingredient ingredientInOrder in orderedPizza)
-                    {
-                        bool ingredientFound = false;
-                        foreach(Ingredient ingredientInDelivery in deliveredPizza)
-                        {
-                            if(ingredientInOrder.IngredientType == ingredientInDelivery.IngredientType)
-                            {
-                                ingredientFound = true;
-                                break;
-                            }
-                        }
-                        
-                        if(ingredientFound == false)
-                        {
-                            //The princess is in another castle. Err, the pizza is in another castle? The princess's pizza is in another castle? - H.E.
-                            deliveryCompleted = false;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    deliveryCompleted = false;
-                }
+            //    //Make sure the delivered pizza has the same ingredients as the pizza that was ordered - H.E.
+            //    if (orderedPizza.Count == deliveredPizza.Count)
+            //    {
+            //        foreach (Ingredient ingredientInOrder in orderedPizza)
+            //        {
+            //            bool ingredientFound = false;
+            //            foreach (Ingredient ingredientInDelivery in deliveredPizza)
+            //            {
+            //                if (ingredientInOrder.IngredientType == ingredientInDelivery.IngredientType)
+            //                {
+            //                    ingredientFound = true;
+            //                    break;
+            //                }
+            //            }
 
-                //Debug.WriteLine("*** Ordered Pizza *** ");
-                //foreach(Ingredient ingredientInOrder in orderedPizza)
-                //{
-                //    Debug.WriteLine(ingredientInOrder.IngredientType.ToString());
-                //}
+            //            if (ingredientFound == false)
+            //            {
+            //                //The princess is in another castle. Err, the pizza is in another castle? The princess's pizza is in another castle? - H.E.
+            //                deliveryCompleted = false;
+            //                break;
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        deliveryCompleted = false;
+            //    }
 
-                //Debug.WriteLine("*** Delivered Pizza *** ");
-                //foreach (Ingredient ingredientInOrder in deliveredPizza)
-                //{
-                //    Debug.WriteLine(ingredientInOrder.IngredientType.ToString());
-                //}
+            //    Debug.WriteLine("*** Ordered Pizza *** ");
+            //    foreach (Ingredient ingredientInOrder in orderedPizza)
+            //    {
+            //        Debug.WriteLine(ingredientInOrder.IngredientType.ToString());
+            //    }
 
-                if (deliveryCompleted == false)
-                {
-                    TheLastSliceGame.Instance.Player.OnDeliveryFailed();
-                    LevelFailed = true;
-                    TheLastSliceGame.Instance.StopMusic();
+            //    Debug.WriteLine("*** Delivered Pizza *** ");
+            //    foreach (Ingredient ingredientInOrder in deliveredPizza)
+            //    {
+            //        Debug.WriteLine(ingredientInOrder.IngredientType.ToString());
+            //    }
 
-                    foreach (Ingredient ingredientInDelivery in deliveredPizza)
-                    {
-                        if(ingredientInDelivery.IsFrog())
-                        {
-                            DeliveredFrog = true;
-                            break;
-                        }
-                    }
+            //    if (deliveryCompleted == false)
+            //    {
+            //        TheLastSliceGame.Instance.Player.OnDeliveryFailed();
+            //        LevelFailed = true;
+            //        TheLastSliceGame.Instance.StopMusic();
 
-                    int random = TheLastSliceGame.Random.Next(100);
-                    if(random < 50)
-                    {
-                        if(DeliveredFrog == true)
-                        {
-                            SFXInstance = FrogDeliverySound1.CreateInstance();
-                        }
-                        else
-                        {
-                            SFXInstance = WrongDeliverySound1.CreateInstance();
-                        }
-                    }
-                    else
-                    {
-                        if (DeliveredFrog == true)
-                        {
-                            SFXInstance = FrogDeliverySound2.CreateInstance();
-                        }
-                        else
-                        {
-                            SFXInstance = WrongDeliverySound2.CreateInstance();
-                        }
-                    }
+            //        foreach (Ingredient ingredientInDelivery in deliveredPizza)
+            //        {
+            //            if (ingredientInDelivery.IsFrog())
+            //            {
+            //                DeliveredFrog = true;
+            //                break;
+            //            }
+            //        }
 
-                    SFXInstance.Play();
-                }
-                else
-                {
-                    CompleteDelivery();
-                }
-            }
+            //        int random = TheLastSliceGame.Random.Next(100);
+            //        if (random < 50)
+            //        {
+            //            if (DeliveredFrog == true)
+            //            {
+            //                SFXInstance = FrogDeliverySound1.CreateInstance();
+            //            }
+            //            else
+            //            {
+            //                SFXInstance = WrongDeliverySound1.CreateInstance();
+            //            }
+            //        }
+            //        else
+            //        {
+            //            if (DeliveredFrog == true)
+            //            {
+            //                SFXInstance = FrogDeliverySound2.CreateInstance();
+            //            }
+            //            else
+            //            {
+            //                SFXInstance = WrongDeliverySound2.CreateInstance();
+            //            }
+            //        }
+
+            //        SFXInstance.Play();
+            //    }
+            //    else
+            //    {
+
+            //    }
+            //}
         }
 
         public void CompleteDelivery()

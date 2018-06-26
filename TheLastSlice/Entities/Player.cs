@@ -190,8 +190,8 @@ namespace TheLastSlice.Entities
             IsChangingMap = false;
             if (!IsBox && CanMove && gameTime.TotalGameTime.TotalMilliseconds > GasTimer.TotalMilliseconds)
             {
-                UpdateGas(-1);
-                GasTimer = TimeSpan.FromMilliseconds(gameTime.TotalGameTime.TotalMilliseconds + GasTimerMS);
+                //UpdateGas(-1);
+                //GasTimer = TimeSpan.FromMilliseconds(gameTime.TotalGameTime.TotalMilliseconds + GasTimerMS);
 
                 if(Gas < LowGasThreshold && !IsDead)
                 {
@@ -738,7 +738,7 @@ namespace TheLastSlice.Entities
 
         public void OnDeliveryFailed()
         {
-            CanMove = false;
+            //CanMove = false;
         }
 
         public void OnGameOver()
